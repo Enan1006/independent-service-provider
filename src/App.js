@@ -7,6 +7,7 @@ import About from './Pages/About/About';
 import Blogs from './Pages/Blogs/Blogs';
 import Header from './Pages/Shared/Header/Header';
 import Footer from './Pages/Shared/Footer/Footer';
+import Login from './Pages/Login/Login/Login';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/service/:serviceId' element={<ServiceDetail />}></Route>
         <Route path='/about' element={<About />}></Route>
         <Route path='/blogs' element={<Blogs />}></Route>
+        <Route path='/login' element={<Login />}></Route>
       </Routes>
       <Footer></Footer>
     </div>
