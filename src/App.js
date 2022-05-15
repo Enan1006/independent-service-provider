@@ -5,16 +5,20 @@ import Home from './Pages/Home/Home/Home';
 import ServiceDetail from './Pages/ServiceDetail/ServiceDetail';
 import About from './Pages/About/About';
 import Blogs from './Pages/Blogs/Blogs';
+import Header from './Pages/Shared/Header/Header';
+import Footer from './Pages/Shared/Footer/Footer';
 
 function App() {
   return (
     <div className="App">
+      <Header></Header>
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/service/:serviceId' element={<ServiceDetail />}></Route>
         <Route path='/about' element={<About />}></Route>
         <Route path='/blogs' element={<Blogs />}></Route>
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }
