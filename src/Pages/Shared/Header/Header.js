@@ -35,7 +35,7 @@ const Header = () => {
                             <li className="nav-item">
                                 <Link to='/about'
                                     className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                                    href="#pablo"
+
                                 >
                                     <i className="fa-solid fa-user text-lg leading-lg text-white opacity-75"></i><span className="ml-2">About</span>
                                 </Link>
@@ -43,19 +43,28 @@ const Header = () => {
                             <li className="nav-item">
                                 <Link to='/blogs'
                                     className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                                    href="#pablo"
+
                                 >
                                     <i className="fa-solid fa-blog text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Blogs</span>
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <a
+                                <Link to='/login'
                                     className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                                    href="#pablo"
+
                                 >
-                                    <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Pin</span>
-                                </a>
+                                    <i className="fa-solid fa-arrow-right-to-bracket text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Login</span>
+                                </Link>
                             </li>
+                            <li className="nav-item">
+                                <Link to='/register'
+                                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+
+                                >
+                                    <i className="fa-solid fa-right-to-bracket text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Register</span>
+                                </Link>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
