@@ -1,11 +1,12 @@
-import React, { useRef } from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import React, { useRef, useState } from 'react';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import loginImg from '../../../Images/login/login.jpg';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { async } from '@firebase/util';
 
 
 const Login = () => {
@@ -16,8 +17,14 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+
+
     const navigate = useNavigate();
     let location = useLocation();
+
+    const [sendPasswordResetEmail, sending, reseterror] = useSendPasswordResetEmail(
+        auth
+    );
 
     const emailRef = useRef('');
     const passwordRef = useRef('');
@@ -30,6 +37,19 @@ const Login = () => {
         await signInWithEmailAndPassword(email, password);
         toast('Login Successful');
     }
+
+    const SendPasswordReset = async (event) => {
+        const email = emailRef.current.value;
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast('Reset link has been sent');
+        }
+        else {
+            toast('Please enter email address');
+        }
+    }
+
+
 
     if (user) {
         navigate(from, { replace: true });
@@ -76,9 +96,9 @@ const Login = () => {
                                             placeholder="" type="password" />
                                     </div>
                                     <p className="mt-4">
-                                        <a className="text-sm text-blue-600 hover:underline" href="./forgot-password.html">
+                                        <button onClick={SendPasswordReset} className="text-sm text-blue-600 hover:underline" href="./forgot-password.html">
                                             Forgot your password?
-                                        </a>
+                                        </button>
                                     </p>
 
 
