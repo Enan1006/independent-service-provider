@@ -10,7 +10,7 @@ const Footer = () => {
                     className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
 
                 >
-                    <i class="fa-solid fa-scale-balanced"></i>
+                    <i className="fa-solid fa-scale-balanced"></i>
                     <span className='ml-3'>Justice Forum</span>
                 </Link>
                 <br></br>

@@ -1,8 +1,15 @@
+import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../../firebase.init';
 
 const Header = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
+    const [user, loading, error] = useAuthState(auth);
+    const logout = () => {
+        signOut(auth);
+    };
 
     return (
         <>
@@ -13,7 +20,7 @@ const Header = () => {
                             className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
 
                         >
-                            <i class="fa-solid fa-scale-balanced"></i>
+                            <i className="fa-solid fa-scale-balanced"></i>
                             <span className='ml-3'>Justice Forum</span>
                         </Link>
                         <button
@@ -49,12 +56,23 @@ const Header = () => {
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to='/login'
-                                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                                {
+                                    user ?
+                                        <button onClick={logout}
+                                            className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
 
-                                >
-                                    <i className="fa-solid fa-arrow-right-to-bracket text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Login</span>
-                                </Link>
+                                        >
+                                            <i className="fa-solid fa-arrow-up-left-from-circle text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Logout</span>
+                                        </button>
+                                        :
+                                        <Link to='/login'
+                                            className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+
+                                        >
+
+                                            <i className="fa-solid fa-arrow-right-to-bracket text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Login</span>
+                                        </Link>
+                                }
                             </li>
                             <li className="nav-item">
                                 <Link to='/register'
