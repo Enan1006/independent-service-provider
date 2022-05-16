@@ -11,6 +11,7 @@ import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import CheckOut from './Pages/CheckOut/CheckOut';
+import Loading from './Pages/Loading/Loading';
 
 function App() {
   return (

@@ -4,6 +4,13 @@ import auth from '../../firebase.init';
 
 const CheckOut = () => {
     const [user, loading] = useAuthState(auth);
+    if (loading) {
+        return (
+            <div>
+                <p>Initialising User...</p>
+            </div>
+        );
+    }
 
     return (
         <div className='h-screen'>
