@@ -59,7 +59,7 @@ const Header = () => {
                                 {
                                     user ?
                                         <button onClick={logout}
-                                            className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                                            className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white  mt-2 hover:opacity-75"
 
                                         >
                                             <i className="fa-solid fa-arrow-up-left-from-circle text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Logout</span>
