@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import loginImg from '../../../Images/login/login.jpg';
 
@@ -13,17 +13,22 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
 
     const navigate = useNavigate();
+    let location = useLocation();
 
     const emailRef = useRef('');
     const passwordRef = useRef('');
-
+    let from = location.state?.from?.pathname || "/";
     const handleSignIn = event => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         console.log(email, password);
         signInWithEmailAndPassword(email, password);
-        navigate('/');
+
+    }
+
+    if (user) {
+        navigate(from, { replace: true });
     }
     return (
         <div>
