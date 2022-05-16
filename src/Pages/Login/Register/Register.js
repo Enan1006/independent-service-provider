@@ -1,8 +1,13 @@
 import React, { useRef } from 'react';
 import registerImg from '../../../Images/login/signup.jpg';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import { sendEmailVerification } from 'firebase/auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 
 const Register = () => {
     const [
@@ -10,17 +15,25 @@ const Register = () => {
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [updateProfile, updating, updateerror] = useUpdateProfile(auth);
 
+    const nameRef = useRef('');
     const emailRef = useRef('');
     const passwordRef = useRef('');
-
-    const handleSubmit = event => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+    const handleSubmit = async event => {
         event.preventDefault();
+        const displayName = nameRef.current.value;
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         console.log(email, password);
-        createUserWithEmailAndPassword(email, password);
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName });
+        toast('Updated profile');
+        navigate(from, { replace: true });
     }
 
 
@@ -49,6 +62,14 @@ const Register = () => {
                                     Create an Account
                                 </h1>
                                 <form onSubmit={handleSubmit}>
+                                    <div>
+                                        <label className="block text-sm">
+                                            Name
+                                        </label>
+                                        <input ref={nameRef} type="text"
+                                            className="w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                                            placeholder="" />
+                                    </div>
                                     <div>
                                         <label className="block text-sm">
                                             Email
@@ -89,6 +110,7 @@ const Register = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div >
     );
 };

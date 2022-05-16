@@ -4,6 +4,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import loginImg from '../../../Images/login/login.jpg';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Login = () => {
     const [
@@ -19,13 +22,13 @@ const Login = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
     let from = location.state?.from?.pathname || "/";
-    const handleSignIn = event => {
+    const handleSignIn = async event => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         console.log(email, password);
-        signInWithEmailAndPassword(email, password);
-
+        await signInWithEmailAndPassword(email, password);
+        toast('Login Successful');
     }
 
     if (user) {
@@ -95,7 +98,11 @@ const Login = () => {
                         </div>
                     </div>
                 </div>
+                <ToastContainer />
+
             </div>
+
+
         </div >
     );
 };
