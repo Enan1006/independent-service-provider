@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "name": "Mike Hodson",
+        "review": "Many thanks to the lawyer  and his team at Savage Oykhman Law for his hard work and determination on my case. It took some time due to covid but ended with results that were above and beyond what I expected. All charges were dropped in the end and no criminal record was received on my end. He was available 24/7 and answered any and all of my questions. Thanks again Greg and keep up the good work.",
+        "img": "https://i.ibb.co/Zdv3KwX/client-1.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Kavin Philips",
+        "review": "Thank you so much for you hard work. The lawyer won my IRS fail against a tough adjudicator, but the odds where in my favour after a hard review process, we where awarded a win and all charges where cancelled. The lawyer was prompt with his time lines, and very professional in this stressful time. I would highly recommend Kiran with OYKHMAN Law for legal defence and advice. I can't thank you enough for getting my life back in order!!",
+        "img": "https://i.ibb.co/CJZ9dZL/client-2.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Chris Davies",
+        "review": "The lawyer is no doubt amazing. He is very detailed and highly communicative - he carries you through the entire process and doesn't mince words. I found this Law firm after researching numerous ones and read the reviews and decided on this one. The initial introduction phone call with Michael was great and comfortable, then got assigned to Kiran who is great. I would definitely recommend this Law Firm and Kiranpreet Cheema. Thank you.",
+        "img": "https://i.ibb.co/hfm0zXK/client-3.jpg"
+    }
+]

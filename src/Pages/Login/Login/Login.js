@@ -29,13 +29,18 @@ const Login = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
     let from = location.state?.from?.pathname || "/";
-    const handleSignIn = async event => {
+    const handleSignIn = event => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         console.log(email, password);
-        await signInWithEmailAndPassword(email, password);
-        toast('Login Successful');
+        signInWithEmailAndPassword(email, password);
+
+    }
+    let errormessage;
+    if (error) {
+        toast(`${error?.message}`);
+        // toast('Login Unsuccessful');
     }
 
     const SendPasswordReset = async (event) => {
@@ -54,6 +59,11 @@ const Login = () => {
     if (user) {
         navigate(from, { replace: true });
     }
+
+    const navigatetoRegister = () => {
+        navigate('/register');
+    }
+
     return (
         <div>
             <div className="flex items-center min-h-screen bg-gray-50">
@@ -98,6 +108,12 @@ const Login = () => {
                                     <p className="mt-4">
                                         <button onClick={SendPasswordReset} className="text-sm text-blue-600 hover:underline" href="./forgot-password.html">
                                             Forgot your password?
+                                        </button>
+                                    </p>
+
+                                    <p className="mt-4">
+                                        <button onClick={navigatetoRegister} className="text-sm text-blue-600 hover:underline" href="./forgot-password.html">
+                                            Haven't created any account yet? <span className='text-red-600'> Register</span>
                                         </button>
                                     </p>
 

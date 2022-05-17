@@ -6,7 +6,7 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 import { sendEmailVerification } from 'firebase/auth';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 
 const Register = () => {
@@ -87,9 +87,9 @@ const Register = () => {
                                             placeholder="" type="password" />
                                     </div>
                                     <p className="mt-4">
-                                        <a className="text-sm text-blue-600 hover:underline" href="./forgot-password.html">
-                                            Forgot your password?
-                                        </a>
+                                        <Link to='/login' className="text-sm text-blue-600 hover:underline">
+                                            Already have account? <span className='text-red-600'> Login</span>
+                                        </Link>
                                     </p>
 
 

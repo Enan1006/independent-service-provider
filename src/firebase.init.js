@@ -5,13 +5,14 @@ import { getApp, getAuth } from 'firebase/auth';
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+
 const firebaseConfig = {
-    apiKey: "AIzaSyB-lz2fCMXRc4x_WMcBTK7IArBA7LLtrdE",
-    authDomain: "justice-forum.firebaseapp.com",
-    projectId: "justice-forum",
-    storageBucket: "justice-forum.appspot.com",
-    messagingSenderId: "315874978393",
-    appId: "1:315874978393:web:2ecfe553bd9fbb78e05f48"
+    apiKey: process.env.REACT_APP_apiKey,
+    authDomain: process.env.REACT_APP_authDomain,
+    projectId: process.env.REACT_APP_projectId,
+    storageBucket: process.env.REACT_APP_storageBucket,
+    messagingSenderId: process.env.REACT_APP_messagingSenderId,
+    appId: process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase
